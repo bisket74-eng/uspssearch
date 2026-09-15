@@ -29,6 +29,15 @@
         body {
             font-family: 'Inter', sans-serif;
         }
+        /* Fix to ensure Google search iframe accepts mobile taps */
+        .gsc-control-cse {
+            background-color: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+        .gsc-search-box {
+            margin-bottom: 0 !important;
+        }
     </style>
 </head>
 <body class="bg-postal-light text-slate-800 min-h-screen flex flex-col justify-between">
@@ -62,7 +71,7 @@
             </div>
 
             <!-- Google Programmable Search Engine Integration -->
-            <div class="bg-slate-50 rounded-lg p-4 sm:p-6 border border-slate-200">
+            <div class="bg-slate-50 rounded-lg p-4 sm:p-6 border border-slate-200 relative z-10">
                 <script async src="https://cse.google.com/cse.js?cx=71c15baa33d51d26"></script>
                 <div class="gcse-search"></div>
             </div>
