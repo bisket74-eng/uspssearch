@@ -1,0 +1,213 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postal Resource Search Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        postal: {
+                            blue: '#333366', /* Classic USPS-like Blue */
+                            red: '#E71921',  /* Classic USPS-like Red */
+                            light: '#f4f6f8',
+                            gray: '#e2e8f0'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f6f8;
+        }
+        
+        .pse-placeholder {
+            border: 2px dashed #94a3b8;
+            background-color: #f8fafc;
+        }
+
+        /* Mock styling for the custom search bar to look cohesive before PSE is loaded */
+        .search-container {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body class="text-slate-800 flex flex-col min-h-screen">
+
+    <header class="bg-postal-blue text-white shadow-md border-b-4 border-postal-red sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <!-- Simple SVG Logo -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <h1 class="text-xl md:text-2xl font-bold tracking-tight">Postal Resource Search</h1>
+            </div>
+            <nav class="hidden md:flex space-x-6 text-sm font-medium text-slate-200">
+                <a href="#search-section" class="hover:text-white transition-colors">Unified Search</a>
+                <a href="#quick-links" class="hover:text-white transition-colors">Quick Links</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+        
+        <!-- Search Section -->
+        <section id="search-section" class="bg-white rounded-xl p-6 md:p-10 search-container text-center">
+            <h2 class="text-2xl md:text-3xl font-bold text-postal-blue mb-4">Unified Knowledge Base Search</h2>
+            <p class="text-slate-600 mb-8 max-w-2xl mx-auto">
+                Search simultaneously across the Domestic Mail Manual (DMM), International Mail Manual (IMM), Postal Explorer, PostalPro, and USPS.com.
+            </p>
+
+            <!-- Google PSE Implementation Area -->
+            <div class="max-w-3xl mx-auto">
+                
+                <div class="bg-slate-50 rounded-lg p-4 shadow-inner border border-slate-200 min-h-[150px] flex flex-col justify-center">
+                    <!-- Replace this script with your Google PSE code --> 
+                    <script async src="https://cse.google.com/cse.js?cx=YOUR_ENGINE_ID"></script>
+                    <div class="gcse-search"></div>
+                    
+                    <!-- Helper text for when the ID is not yet added -->
+                    <p class="text-sm text-slate-500 mt-4 text-center">
+                        <em>The search bar will load here once you replace <strong>YOUR_ENGINE_ID</strong> in the code with your actual Engine ID.</em>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="quick-links">
+            <h3 class="text-xl font-semibold text-slate-800 mb-6 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-postal-red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                </svg>
+                Direct Manual Links
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- USPS.com Card -->
+                <a href="https://www.usps.com/" target="_blank" rel="noopener noreferrer" class="group bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-postal-blue transition-all duration-200 flex flex-col h-full">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-lg font-bold text-postal-blue group-hover:text-blue-700 transition-colors">USPS.com</h4>
+                        <span class="bg-gray-100 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded">Main Site</span>
+                    </div>
+                    <p class="text-sm text-slate-600 flex-grow">
+                        <strong>USPS.com:</strong> The official main website for the United States Postal Service for tracking, shipping, and retail services.
+                    </p>
+                    <div class="mt-4 text-postal-red text-sm font-medium flex items-center group-hover:translate-x-1 transition-transform">
+                        Visit Site 
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </a>
+
+                <!-- DMM Card -->
+                <a href="https://pe.usps.com/text/dmm300/dmm300_landing.htm" target="_blank" rel="noopener noreferrer" class="group bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-postal-blue transition-all duration-200 flex flex-col h-full">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-lg font-bold text-postal-blue group-hover:text-blue-700 transition-colors">DMM</h4>
+                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">Domestic</span>
+                    </div>
+                    <p class="text-sm text-slate-600 flex-grow">
+                        <strong>Domestic Mail Manual:</strong> The official source of standards and regulations for all domestic mail services.
+                    </p>
+                    <div class="mt-4 text-postal-red text-sm font-medium flex items-center group-hover:translate-x-1 transition-transform">
+                        Access Manual 
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </a>
+
+                <!-- IMM Card -->
+                <a href="https://pe.usps.com/text/imm/immctnts.htm" target="_blank" rel="noopener noreferrer" class="group bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-postal-blue transition-all duration-200 flex flex-col h-full">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-lg font-bold text-postal-blue group-hover:text-blue-700 transition-colors">IMM</h4>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-semibold px-2.5 py-0.5 rounded">International</span>
+                    </div>
+                    <p class="text-sm text-slate-600 flex-grow">
+                        <strong>International Mail Manual:</strong> The official source of standards and regulations for all international mail services.
+                    </p>
+                    <div class="mt-4 text-postal-red text-sm font-medium flex items-center group-hover:translate-x-1 transition-transform">
+                        Access Manual 
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </a>
+
+                <!-- Postal Explorer Card -->
+                <a href="https://pe.usps.com/" target="_blank" rel="noopener noreferrer" class="group bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-postal-blue transition-all duration-200 flex flex-col h-full">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-lg font-bold text-postal-blue group-hover:text-blue-700 transition-colors">Postal Explorer</h4>
+                        <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded">General</span>
+                    </div>
+                    <p class="text-sm text-slate-600 flex-grow">
+                        <strong>pe.usps.com:</strong> Comprehensive portal containing price calculators, zone charts, and all official mailing standards.
+                    </p>
+                    <div class="mt-4 text-postal-red text-sm font-medium flex items-center group-hover:translate-x-1 transition-transform">
+                        Visit Site 
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </a>
+
+                <!-- PostalPro Card -->
+                <a href="https://postalpro.usps.com/" target="_blank" rel="noopener noreferrer" class="group bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-postal-blue transition-all duration-200 flex flex-col h-full">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-lg font-bold text-postal-blue group-hover:text-blue-700 transition-colors">PostalPro</h4>
+                        <span class="bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-0.5 rounded">Professional</span>
+                    </div>
+                    <p class="text-sm text-slate-600 flex-grow">
+                        <strong>postalpro.usps.com:</strong> Resources, specifications, and operational information for mailing professionals and industry partners.
+                    </p>
+                    <div class="mt-4 text-postal-red text-sm font-medium flex items-center group-hover:translate-x-1 transition-transform">
+                        Visit Site 
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-800 text-slate-300 py-8 mt-auto">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <p class="text-sm font-medium">Custom Postal Search Portal</p>
+                <p class="text-xs text-slate-400 mt-1">Designed for workflow efficiency.</p>
+            </div>
+            <div class="text-xs text-slate-400 max-w-sm text-center md:text-right">
+                <p>Disclaimer: This is a custom utility interface. All links and search results direct to official USPS properties. This page is not officially endorsed by the USPS.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+```
