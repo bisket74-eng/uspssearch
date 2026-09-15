@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>USPS Universal Search</title>
-
-<script src="https://cdn.tailwindcss.com"></script>
-
-<script>
+<title>USPS Universal Search</title><script async src="https://cse.google.com/cse.js?cx=71c15baa33d51d26"></script><script src="https://cdn.tailwindcss.com"></script><script>
 tailwind.config = {
   theme: {
     extend: {
@@ -22,52 +17,73 @@ tailwind.config = {
     }
   }
 }
-</script>
-
-<style>
+</script><style>
 * {
   box-sizing: border-box;
 }
 
-body {
+html, body {
   margin: 0;
+  padding: 0;
   font-family: Arial, sans-serif;
   background: #F4F6F9;
   color: #1e293b;
 }
 
-.search-input {
-  width: 100%;
-  min-width: 0;
-  height: 48px;
-  padding: 0 12px;
-  font-size: 16px;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  outline: none;
-  background: white;
-  -webkit-appearance: none;
+/* Keep Google's search/results area inside the page */
+.gsc-control-cse {
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
 }
 
-.search-input:focus {
-  border: 2px solid #004B87;
+.gsc-control-wrapper-cse {
+  width: 100% !important;
 }
 
-.search-button {
-  height: 48px;
-  padding: 0 18px;
-  border: none;
-  border-radius: 8px;
-  background: #004B87;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  white-space: nowrap;
+.gsc-search-box {
+  margin-bottom: 8px !important;
 }
 
-.search-button:active {
-  background: #002B49;
+.gsc-input-box {
+  height: 44px !important;
+  border-radius: 8px !important;
+}
+
+.gsc-input {
+  height: 42px !important;
+  font-size: 16px !important;
+}
+
+.gsc-search-button-v2 {
+  height: 44px !important;
+  padding: 0 18px !important;
+  border-radius: 8px !important;
+  background-color: #004B87 !important;
+  border-color: #004B87 !important;
+}
+
+.gsc-search-button-v2:hover {
+  background-color: #002B49 !important;
+  border-color: #002B49 !important;
+}
+
+.gsc-results {
+  width: 100% !important;
+}
+
+.gsc-result {
+  padding: 10px 0 !important;
+}
+
+.gs-title {
+  color: #004B87 !important;
+  font-size: 16px !important;
+}
+
+.gs-snippet {
+  font-size: 13px !important;
+  line-height: 1.4 !important;
 }
 
 .site-link {
@@ -75,7 +91,7 @@ body {
   background: white;
   border: 1px solid #dbe1e8;
   border-radius: 8px;
-  padding: 11px 12px;
+  padding: 9px 10px;
   text-decoration: none;
   color: #1e293b;
 }
@@ -87,113 +103,60 @@ body {
 .site-link strong {
   display: block;
   color: #004B87;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .site-link span {
   display: block;
   color: #64748b;
-  font-size: 11px;
-  margin-top: 3px;
+  font-size: 10px;
+  margin-top: 2px;
 }
-</style>
-</head>
-
-<body>
-
-<!-- Header -->
-<header class="bg-postal-darkblue text-white border-b-4 border-postal-red">
-  <div class="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center">
-    <h1 class="text-lg font-bold">🔎 Postal Resource Search</h1>
+</style></head><body><!-- Header --><header class="bg-postal-darkblue text-white border-b-4 border-postal-red">
+  <div class="max-w-4xl mx-auto px-3 py-2 flex justify-between items-center">
+    <h1 class="text-base font-bold">🔎 Postal Resource Search</h1>
     <span class="text-xs text-slate-300">USPS Tools</span>
   </div>
-</header>
+</header><!-- Main --><main class="max-w-4xl mx-auto px-3 py-2">  <!-- Search -->  <section class="bg-white rounded-lg border border-slate-200 p-3 shadow-sm"><h2 class="text-base font-bold text-postal-darkblue mb-1">
+  Universal Manual & Site Search
+</h2>
 
-<!-- Main -->
-<main class="max-w-4xl mx-auto px-3 py-4">
+<div class="gcse-search"></div>
 
-  <!-- Search -->
-  <section class="bg-white rounded-lg border border-slate-200 p-4 shadow-sm">
+  </section>  <!-- Direct Links -->  <section class="mt-3"><h2 class="text-sm font-bold text-postal-darkblue mb-1">
+  Direct Site Links
+</h2>
 
-    <h2 class="text-lg font-bold text-postal-darkblue mb-3">
-      Universal Manual & Site Search
-    </h2>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
 
-    <form
-      action="https://cse.google.com/cse/publicurl"
-      method="get"
-      target="_blank"
-      class="flex gap-2"
-    >
+  <a class="site-link" href="https://pe.usps.com/" target="_blank" rel="noopener">
+    <strong>Postal Explorer</strong>
+    <span>DMM • IMM • Manuals</span>
+  </a>
 
-      <input
-        class="search-input"
-        type="search"
-        name="q"
-        placeholder="Search postal resources..."
-        autocomplete="off"
-        enterkeyhint="search"
-        required
-      >
+  <a class="site-link" href="https://postalpro.usps.com/" target="_blank" rel="noopener">
+    <strong>PostalPro</strong>
+    <span>Technical resources</span>
+  </a>
 
-      <input
-        type="hidden"
-        name="cx"
-        value="71c15baa33d51d26"
-      >
+  <a class="site-link" href="https://www.usps.com/" target="_blank" rel="noopener">
+    <strong>USPS.com</strong>
+    <span>Tracking • Shipping</span>
+  </a>
 
-      <button class="search-button" type="submit">
-        Search
-      </button>
+  <a class="site-link" href="https://www.apwu.org/" target="_blank" rel="noopener">
+    <strong>APWU</strong>
+    <span>Union • Contracts</span>
+  </a>
 
-    </form>
+  <a class="site-link" href="https://www.nalc.org/" target="_blank" rel="noopener">
+    <strong>NALC</strong>
+    <span>Letter carriers</span>
+  </a>
 
-  </section>
+</div>
 
-  <!-- Direct Links -->
-  <section class="mt-4">
-
-    <h2 class="text-base font-bold text-postal-darkblue mb-2">
-      Direct Site Links
-    </h2>
-
-    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
-
-      <a class="site-link" href="https://pe.usps.com/" target="_blank">
-        <strong>Postal Explorer</strong>
-        <span>DMM • IMM • Manuals</span>
-      </a>
-
-      <a class="site-link" href="https://postalpro.usps.com/" target="_blank">
-        <strong>PostalPro</strong>
-        <span>Technical resources</span>
-      </a>
-
-      <a class="site-link" href="https://www.usps.com/" target="_blank">
-        <strong>USPS.com</strong>
-        <span>Tracking • Shipping</span>
-      </a>
-
-      <a class="site-link" href="https://www.apwu.org/" target="_blank">
-        <strong>APWU</strong>
-        <span>Union • Contracts</span>
-      </a>
-
-      <a class="site-link" href="https://www.nalc.org/" target="_blank">
-        <strong>NALC</strong>
-        <span>Letter carriers</span>
-      </a>
-
-    </div>
-
-  </section>
-
-</main>
-
-<!-- Footer -->
-<footer class="text-center text-xs text-slate-400 py-3">
+  </section></main><footer class="text-center text-xs text-slate-400 py-2">
   Postal Resource Search
-</footer>
-
-</body>
+</footer></body>
 </html>
