@@ -2,7 +2,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>USPS Universal Search</title><!-- YOUR GOOGLE CUSTOM SEARCH ENGINE --><script async src="https://cse.google.com/cse.js?cx=71c15baa33d51d26"></script><script src="https://cdn.tailwindcss.com"></script><script>
+<title>USPS Universal Search</title><script src="https://cdn.tailwindcss.com"></script><script>
 tailwind.config = {
   theme: {
     extend: {
@@ -33,16 +33,11 @@ body {
   color: #1e293b;
 }
 
-/* Google search box */
+/* Google search */
 .gsc-control-cse {
   padding: 0 !important;
   border: 0 !important;
   background: transparent !important;
-  font-family: Arial, sans-serif !important;
-}
-
-.gsc-control-wrapper-cse {
-  width: 100% !important;
 }
 
 .gsc-search-box {
@@ -52,7 +47,6 @@ body {
 .gsc-input-box {
   height: 44px !important;
   border-radius: 8px !important;
-  border-color: #cbd5e1 !important;
 }
 
 .gsc-input {
@@ -64,40 +58,23 @@ body {
   height: 44px !important;
   padding: 0 16px !important;
   border-radius: 8px !important;
-  background-color: #004B87 !important;
+  background: #004B87 !important;
   border-color: #004B87 !important;
-  margin-top: 0 !important;
 }
 
 .gsc-search-button-v2:hover {
-  background-color: #002B49 !important;
+  background: #002B49 !important;
   border-color: #002B49 !important;
-}
-
-/* Results */
-.gsc-result {
-  padding: 10px 0 !important;
 }
 
 .gs-title {
   color: #004B87 !important;
-  font-size: 16px !important;
 }
 
 .gs-snippet {
   font-size: 13px !important;
-  line-height: 1.4 !important;
 }
 
-.gsc-result-info {
-  font-size: 11px !important;
-}
-
-.gsc-results {
-  width: 100% !important;
-}
-
-/* Direct links */
 .site-link {
   display: block;
   background: white;
@@ -124,8 +101,42 @@ body {
   font-size: 10px;
   margin-top: 2px;
 }
-</style></head><body><!-- HEADER --><header class="bg-postal-darkblue text-white border-b-4 border-postal-red">
-  <div class="max-w-4xl mx-auto px-3 py-2 flex justify-between items-center"><h1 class="text-base font-bold">
+</style><script>
+window.__gcse = {
+  parsetags: 'explicit',
+
+  initializationCallback: function() {
+
+    if (document.readyState === 'complete') {
+      renderSearch();
+    } else {
+      window.addEventListener('load', renderSearch);
+    }
+
+  }
+};
+
+function renderSearch() {
+
+  if (
+    window.google &&
+    google.search &&
+    google.search.cse &&
+    google.search.cse.element
+  ) {
+
+    google.search.cse.element.render({
+      div: 'google-search',
+      tag: 'search'
+    });
+
+  }
+
+}
+</script><!-- Google Programmable Search --><script
+  async
+  src="https://cse.google.com/cse.js?cx=71c15baa33d51d26">
+</script></head><body><header class="bg-postal-darkblue text-white border-b-4 border-postal-red">  <div class="max-w-4xl mx-auto px-3 py-2 flex justify-between items-center"><h1 class="text-base font-bold">
   🔎 Postal Resource Search
 </h1>
 
@@ -133,15 +144,14 @@ body {
   USPS Tools
 </span>
 
-  </div>
-</header><!-- MAIN --><main class="max-w-4xl mx-auto px-3 py-2">  <!-- SEARCH -->  <section class="bg-white rounded-lg border border-slate-200 p-3 shadow-sm"><h2 class="text-base font-bold text-postal-darkblue mb-2">
+  </div></header><main class="max-w-4xl mx-auto px-3 py-2">  <section class="bg-white rounded-lg border border-slate-200 p-3 shadow-sm"><h2 class="text-base font-bold text-postal-darkblue mb-2">
   Universal Manual & Site Search
 </h2>
 
-<!-- GOOGLE CUSTOM SEARCH -->
-<div class="gcse-search"></div>
+<!-- GOOGLE SEARCH BOX + RESULTS -->
+<div id="google-search"></div>
 
-  </section>  <!-- DIRECT LINKS -->  <section class="mt-3"><h2 class="text-sm font-bold text-postal-darkblue mb-1">
+  </section>  <section class="mt-3"><h2 class="text-sm font-bold text-postal-darkblue mb-1">
   Direct Site Links
 </h2>
 
@@ -199,7 +209,7 @@ body {
 
 </div>
 
-  </section></main><!-- FOOTER --><footer class="text-center text-xs text-slate-400 py-2">
+  </section></main><footer class="text-center text-xs text-slate-400 py-2">
   Postal Resource Search
 </footer></body>
 </html>
