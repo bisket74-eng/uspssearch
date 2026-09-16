@@ -1,8 +1,11 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>USPS Universal Search</title><script src="https://cdn.tailwindcss.com"></script><script>
+<title>USPS Universal Search</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
 tailwind.config = {
   theme: {
     extend: {
@@ -17,7 +20,8 @@ tailwind.config = {
     }
   }
 }
-</script><style>
+</script>
+<style>
 * {
   box-sizing: border-box;
 }
@@ -101,115 +105,70 @@ body {
   font-size: 10px;
   margin-top: 2px;
 }
-</style><script>
-window.__gcse = {
-  parsetags: 'explicit',
+</style>
+<!-- Google Programmable Search — standard async embed, no explicit render needed -->
+<script>
+  (function() {
+    var cx = '71c15baa33d51d26';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+</head>
+<body>
+<header class="bg-postal-darkblue text-white border-b-4 border-postal-red">
+  <div class="max-w-4xl mx-auto px-3 py-2 flex justify-between items-center">
+    <h1 class="text-base font-bold">🔎 Postal Resource Search</h1>
+    <span class="text-xs text-slate-300">USPS Tools</span>
+  </div>
+</header>
 
-  initializationCallback: function() {
+<main class="max-w-4xl mx-auto px-3 py-2">
+  <section class="bg-white rounded-lg border border-slate-200 p-3 shadow-sm">
+    <h2 class="text-base font-bold text-postal-darkblue mb-2">Universal Manual & Site Search</h2>
+    <!-- Standard CSE tag embed -->
+    <div class="gcse-search"></div>
+  </section>
 
-    if (document.readyState === 'complete') {
-      renderSearch();
-    } else {
-      window.addEventListener('load', renderSearch);
-    }
+  <section class="mt-3">
+    <h2 class="text-sm font-bold text-postal-darkblue mb-1">Direct Site Links</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
 
-  }
-};
+      <a class="site-link" href="https://pe.usps.com/" target="_blank" rel="noopener">
+        <strong>Postal Explorer</strong>
+        <span>DMM • IMM • Manuals</span>
+      </a>
 
-function renderSearch() {
+      <a class="site-link" href="https://postalpro.usps.com/" target="_blank" rel="noopener">
+        <strong>PostalPro</strong>
+        <span>Technical resources</span>
+      </a>
 
-  if (
-    window.google &&
-    google.search &&
-    google.search.cse &&
-    google.search.cse.element
-  ) {
+      <a class="site-link" href="https://www.usps.com/" target="_blank" rel="noopener">
+        <strong>USPS.com</strong>
+        <span>Tracking • Shipping</span>
+      </a>
 
-    google.search.cse.element.render({
-      div: 'google-search',
-      tag: 'search'
-    });
+      <a class="site-link" href="https://www.apwu.org/" target="_blank" rel="noopener">
+        <strong>APWU</strong>
+        <span>Union • Contracts</span>
+      </a>
 
-  }
+      <a class="site-link" href="https://www.nalc.org/" target="_blank" rel="noopener">
+        <strong>NALC</strong>
+        <span>Letter carriers</span>
+      </a>
 
-}
-</script><!-- Google Programmable Search --><script
-  async
-  src="https://cse.google.com/cse.js?cx=71c15baa33d51d26">
-</script></head><body><header class="bg-postal-darkblue text-white border-b-4 border-postal-red">  <div class="max-w-4xl mx-auto px-3 py-2 flex justify-between items-center"><h1 class="text-base font-bold">
-  🔎 Postal Resource Search
-</h1>
+    </div>
+  </section>
+</main>
 
-<span class="text-xs text-slate-300">
-  USPS Tools
-</span>
-
-  </div></header><main class="max-w-4xl mx-auto px-3 py-2">  <section class="bg-white rounded-lg border border-slate-200 p-3 shadow-sm"><h2 class="text-base font-bold text-postal-darkblue mb-2">
-  Universal Manual & Site Search
-</h2>
-
-<!-- GOOGLE SEARCH BOX + RESULTS -->
-<div id="google-search"></div>
-
-  </section>  <section class="mt-3"><h2 class="text-sm font-bold text-postal-darkblue mb-1">
-  Direct Site Links
-</h2>
-
-<div class="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
-
-  <a
-    class="site-link"
-    href="https://pe.usps.com/"
-    target="_blank"
-    rel="noopener"
-  >
-    <strong>Postal Explorer</strong>
-    <span>DMM • IMM • Manuals</span>
-  </a>
-
-  <a
-    class="site-link"
-    href="https://postalpro.usps.com/"
-    target="_blank"
-    rel="noopener"
-  >
-    <strong>PostalPro</strong>
-    <span>Technical resources</span>
-  </a>
-
-  <a
-    class="site-link"
-    href="https://www.usps.com/"
-    target="_blank"
-    rel="noopener"
-  >
-    <strong>USPS.com</strong>
-    <span>Tracking • Shipping</span>
-  </a>
-
-  <a
-    class="site-link"
-    href="https://www.apwu.org/"
-    target="_blank"
-    rel="noopener"
-  >
-    <strong>APWU</strong>
-    <span>Union • Contracts</span>
-  </a>
-
-  <a
-    class="site-link"
-    href="https://www.nalc.org/"
-    target="_blank"
-    rel="noopener"
-  >
-    <strong>NALC</strong>
-    <span>Letter carriers</span>
-  </a>
-
-</div>
-
-  </section></main><footer class="text-center text-xs text-slate-400 py-2">
+<footer class="text-center text-xs text-slate-400 py-2">
   Postal Resource Search
-</footer></body>
+</footer>
+</body>
 </html>
