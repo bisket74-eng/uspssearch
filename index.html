@@ -1,296 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>USPS Resource Search</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root {
-  --paper: #F4F7FA;
-  --paper-card: #FFFFFF;
-  --navy: #0B2545;
-  --blue: #00507A;
-  --brick: #C0392B;
-  --ink: #1E2430;
-  --ink-soft: #667085;
-  --line: #DCE3EC;
-}
-
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
-
-body {
-  font-family: 'Inter', Arial, sans-serif;
-  background: var(--paper);
-  color: var(--ink);
-  min-height: 100vh;
-}
-
-/* ---------- Airmail edge stripes ---------- */
-.airmail-edge {
-  height: 9px;
-  background: repeating-linear-gradient(
-    -45deg,
-    var(--brick) 0 10px,
-    #fff 10px 14px,
-    var(--navy) 14px 24px,
-    #fff 24px 28px
-  );
-}
-
-/* ---------- Masthead ---------- */
-.masthead {
-  background: var(--navy);
-  color: #F3EFE3;
-  padding: 26px 20px 22px;
-  position: relative;
-}
-
-.masthead::after {
-  content: "";
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 3px;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--brick) 0 5px,
-    transparent 5px 9px
-  );
-}
-
-.masthead-row {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  max-width: 640px;
-  margin: 0 auto;
-}
-
-.postmark {
-  flex: 0 0 auto;
-  width: 62px;
-  height: 62px;
-}
-
-.masthead h1 {
-  font-family: 'Roboto Slab', serif;
-  font-weight: 700;
-  font-size: 20px;
-  margin: 0 0 3px;
-  letter-spacing: 0.2px;
-}
-
-.masthead p {
-  margin: 0;
-  font-size: 12.5px;
-  color: #B9C2D6;
-}
-
-/* ---------- Main ---------- */
-main {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 26px 20px 10px;
-}
-
-.search-block { margin-bottom: 30px; }
-
-.section-label {
-  font-family: 'Roboto Slab', serif;
-  font-weight: 500;
-  font-size: 15px;
-  color: var(--navy);
-  margin: 0 0 10px;
-}
-
-.search-card {
-  background: var(--paper-card);
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  padding: 16px;
-  box-shadow: 0 1px 0 rgba(11,37,69,0.04);
-}
-
-.gsc-control-cse {
-  padding: 0 !important;
-  border: 0 !important;
-  background: transparent !important;
-  font-family: 'Inter', Arial, sans-serif !important;
-}
-.gsc-search-box { margin-bottom: 8px !important; }
-.gsc-input-box {
-  height: 46px !important;
-  border-radius: 4px !important;
-  border-color: var(--line) !important;
-}
-.gsc-input { height: 44px !important; font-size: 16px !important; }
-.gsc-search-button-v2 {
-  height: 46px !important;
-  padding: 0 18px !important;
-  border-radius: 4px !important;
-  background: var(--blue) !important;
-  border-color: var(--blue) !important;
-}
-.gsc-search-button-v2:hover {
-  background: var(--navy) !important;
-  border-color: var(--navy) !important;
-}
-.gs-title { color: var(--blue) !important; }
-.gs-snippet { font-size: 13px !important; color: var(--ink-soft) !important; }
-
-.tear {
-  border: none;
-  border-top: 2px dotted var(--line);
-  margin: 28px 0;
-}
-
-/* ---------- Site links ---------- */
-.links-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.site-link {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  background: var(--paper-card);
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  padding: 16px 14px;
-  text-decoration: none;
-  color: var(--ink);
-  transition: border-color 0.15s ease, transform 0.1s ease;
-}
-
-.site-link:active {
-  border-color: var(--blue);
-  transform: scale(0.98);
-}
-
-.site-link svg {
-  width: 20px;
-  height: 20px;
-  stroke: var(--blue);
-}
-
-.site-link strong {
-  font-family: 'Roboto Slab', serif;
-  font-weight: 500;
-  font-size: 14.5px;
-  color: var(--navy);
-}
-
-.site-link span {
-  font-size: 11.5px;
-  color: var(--ink-soft);
-}
-
-.site-link.wide {
-  grid-column: 1 / -1;
-  flex-direction: row;
-  align-items: center;
-  gap: 12px;
-}
-.site-link.wide svg { flex: 0 0 auto; }
-
-footer {
-  text-align: center;
-  font-size: 11px;
-  color: var(--ink-soft);
-  padding: 20px 20px 0;
-  letter-spacing: 0.3px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USPS Universal Search</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        postal: {
+                            blue: '#004B87',
+                            red: '#DA291C',
+                            darkblue: '#002B49',
+                            light: '#F4F6F9',
+                            border: '#D1D5DB'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Fix to ensure Google search iframe accepts mobile taps */
+        .gsc-control-cse {
+            background-color: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+        .gsc-search-box {
+            margin-bottom: 0 !important;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-postal-light text-slate-800 min-h-screen flex flex-col justify-between">
 
-<div class="airmail-edge"></div>
+    <!-- Header / Navbar -->
+    <header class="bg-postal-darkblue text-white shadow-md border-b-4 border-postal-red sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-3.5 flex flex-wrap justify-between items-center space-y-1 sm:space-y-0">
+            <div class="flex items-center space-x-3">
+                <!-- Mail/Search Icon -->
+                <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+                <h1 class="text-xl font-bold tracking-tight">Postal Resource Search</h1>
+            </div>
+            <div class="text-xs text-slate-300 font-medium">
+                Unified Search Dashboard
+            </div>
+        </div>
+    </header>
 
-<header class="masthead">
-  <div class="masthead-row">
-    <div>
-      <h1>USPS Resource Search</h1>
-      <p>Manuals, tracking, and union resources — one place</p>
-    </div>
-  </div>
-</header>
+    <!-- Main Content Container -->
+    <main class="max-w-4xl w-full mx-auto px-4 py-8 space-y-8 flex-grow">
 
-<main>
-  <div class="search-block">
-    <p class="section-label">Search everything</p>
-    <div class="search-card">
-      <div class="gcse-search"></div>
-    </div>
-  </div>
+        <!-- Search Card Section -->
+        <section class="bg-white rounded-xl shadow-inner border border-postal-border p-6 sm:p-8">
+            <div class="max-w-2xl mx-auto text-center space-y-3 mb-6">
+                <h2 class="text-2xl font-bold text-postal-darkblue">Universal Manual & Site Search</h2>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Simultaneously search across the Domestic Mail Manual (DMM), International Mail Manual (IMM), Postal Explorer, PostalPro, USPS.com, APWU.org, and NALC.org.
+                </p>
+            </div>
 
-  <hr class="tear">
+            <!-- Google Programmable Search Engine Integration -->
+            <div class="bg-slate-50 rounded-lg p-4 sm:p-6 border border-slate-200 relative z-10">
+                <script async src="https://cse.google.com/cse.js?cx=71c15baa33d51d26"></script>
+                <div class="gcse-search"></div>
+            </div>
+        </section>
 
-  <p class="section-label">Go direct</p>
-  <div class="links-grid">
+        <!-- Quick Links Grid -->
+        <section class="space-y-4">
+            <h3 class="text-lg font-bold text-slate-800 flex items-center space-x-2">
+                <svg class="w-5 h-5 text-postal-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+                </svg>
+                <span>Direct Site Links</span>
+            </h3>
 
-    <a class="site-link" href="https://pe.usps.com/" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-      <strong>Postal Explorer</strong>
-      <span>Full manual index</span>
-    </a>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                
+                <!-- 1. USPS.com (Top Left) -->
+                <a href="https://www.usps.com/" target="_blank" rel="noopener noreferrer" class="group bg-white p-4 rounded-xl border border-slate-200 hover:border-postal-blue shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-xs font-bold text-postal-blue group-hover:text-postal-darkblue transition-colors">USPS.COM</span>
+                            <svg class="w-4 h-4 text-slate-400 group-hover:text-postal-blue transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-bold text-slate-800 group-hover:text-postal-blue transition-colors">USPS Home</h4>
+                        <p class="text-xs text-slate-500 mt-1">Main site for tracking, shipping calculators, retail, and locations.</p>
+                    </div>
+                </a>
 
-    <a class="site-link" href="https://pe.usps.com/TEXT/DMM300/welcome.htm" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
-      <strong>DMM</strong>
-      <span>Domestic Mail Manual</span>
-    </a>
+                <!-- 2. Postal Explorer (Top Right) -->
+                <a href="https://pe.usps.com/" target="_blank" rel="noopener noreferrer" class="group bg-white p-4 rounded-xl border border-slate-200 hover:border-postal-blue shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-xs font-bold text-postal-blue group-hover:text-postal-darkblue transition-colors">PE.USPS.COM</span>
+                            <svg class="w-4 h-4 text-slate-400 group-hover:text-postal-blue transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-bold text-slate-800 group-hover:text-postal-blue transition-colors">Postal Explorer</h4>
+                        <p class="text-xs text-slate-500 mt-1">Access home for DMM, IMM, manuals, notices, and postal bulletins.</p>
+                    </div>
+                </a>
 
-    <a class="site-link" href="https://pe.usps.com/TEXT/IMM/welcome.htm" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg>
-      <strong>IMM</strong>
-      <span>International Mail Manual</span>
-    </a>
+                <!-- 3. PostalPro (Row 2, Left) -->
+                <a href="https://postalpro.usps.com/" target="_blank" rel="noopener noreferrer" class="group bg-white p-4 rounded-xl border border-slate-200 hover:border-postal-blue shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-xs font-bold text-postal-blue group-hover:text-postal-darkblue transition-colors">POSTALPRO.USPS.COM</span>
+                            <svg class="w-4 h-4 text-slate-400 group-hover:text-postal-blue transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-bold text-slate-800 group-hover:text-postal-blue transition-colors">PostalPro</h4>
+                        <p class="text-xs text-slate-500 mt-1">Technical resources, mailing standards, promotions, and industry data.</p>
+                    </div>
+                </a>
 
-    <a class="site-link" href="https://postalpro.usps.com/" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-      <strong>PostalPro</strong>
-      <span>Technical resources</span>
-    </a>
+                <!-- 4. Postal Operations Manual (POM) (Row 2, Right) -->
+                <a href="https://pe.usps.com/text/pom/welcome.htm" target="_blank" rel="noopener noreferrer" class="group bg-white p-4 rounded-xl border border-slate-200 hover:border-postal-blue shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-xs font-bold text-postal-blue group-hover:text-postal-darkblue transition-colors">PE.USPS.COM/POM</span>
+                            <svg class="w-4 h-4 text-slate-400 group-hover:text-postal-blue transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-bold text-slate-800 group-hover:text-postal-blue transition-colors">Postal Operations Manual (POM)</h4>
+                        <p class="text-xs text-slate-500 mt-1">Operational policies, retail services, and postal facility guidelines.</p>
+                    </div>
+                </a>
 
-    <a class="site-link" href="https://www.usps.com/" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="1.5"/></svg>
-      <strong>USPS.com</strong>
-      <span>Tracking · Shipping</span>
-    </a>
+                <!-- 5. Domestic Mail Manual (DMM) (Row 3, Left) -->
+                <a href="https://pe.usps.com/text/dmm300/welcome.htm" target="_blank" rel="noopener noreferrer" class="group bg-white p-4 rounded-xl border border-slate-200 hover:border-postal-blue shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-xs font-bold text-postal-blue group-hover:text-postal-darkblue transition-colors">PE.USPS.COM/DMM</span>
+                            <svg class="w-4 h-4 text-slate-400 group-hover:text-postal-blue transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-bold text-slate-800 group-hover:text-postal-blue transition-colors">Domestic Mail Manual (DMM)</h4>
+                        <p class="text-xs text-slate-500 mt-1">Standards for domestic mailing services, classes, and requirements.</p>
+                    </div>
+                </a>
 
-    <a class="site-link" href="https://www.apwu.org/" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7z"/></svg>
-      <strong>APWU</strong>
-      <span>Union · Contracts</span>
-    </a>
+                <!-- 6. International Mail Manual (IMM) (Row 3, Right) -->
+                <a href="https://pe.usps.com/text/imm/welcome.htm" target="_blank" rel="noopener noreferrer" class="group bg-white p-4 rounded-xl border border-slate-200 hover:border-postal-blue shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-xs font-bold text-postal-blue group-hover:text-postal-darkblue transition-colors">PE.USPS.COM/IMM</span>
+                            <svg class="w-4 h-4 text-slate-400 group-hover:text-postal-blue transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-bold text-slate-800 group-hover:text-postal-blue transition-colors">International Mail Manual (IMM)</h4>
+                        <p class="text-xs text-slate-500 mt-1">Global mailing standards, country conditions, and international shipping.</p>
+                    </div>
+                </a>
 
-    <a class="site-link wide" href="https://www.nalc.org/" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20h5v-2a4 4 0 0 0-3-3.87"/><path d="M9 20H4v-2a4 4 0 0 1 3-3.87"/><circle cx="9" cy="7" r="3"/><circle cx="17" cy="7" r="3"/></svg>
-      <strong>NALC</strong>
-      <span>Letter carriers</span>
-    </a>
+                <!-- 7. APWU (Row 4, Left) -->
+                <a href="https://www.apwu.org/" target="_blank" rel="noopener noreferrer" class="group bg-white p-4 rounded-xl border border-slate-200 hover:border-postal-blue shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-xs font-bold text-postal-blue group-hover:text-postal-darkblue transition-colors">APWU.ORG</span>
+                            <svg class="w-4 h-4 text-slate-400 group-hover:text-postal-blue transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-bold text-slate-800 group-hover:text-postal-blue transition-colors">APWU</h4>
+                        <p class="text-xs text-slate-500 mt-1">American Postal Workers Union news, contracts, and representation.</p>
+                    </div>
+                </a>
 
-  </div>
-</main>
+                <!-- 8. NALC (Row 4, Right) -->
+                <a href="https://www.nalc.org/" target="_blank" rel="noopener noreferrer" class="group bg-white p-4 rounded-xl border border-slate-200 hover:border-postal-blue shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-xs font-bold text-postal-blue group-hover:text-postal-darkblue transition-colors">NALC.ORG</span>
+                            <svg class="w-4 h-4 text-slate-400 group-hover:text-postal-blue transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-bold text-slate-800 group-hover:text-postal-blue transition-colors">NALC</h4>
+                        <p class="text-xs text-slate-500 mt-1">National Association of Letter Carriers updates, resources, and info.</p>
+                    </div>
+                </a>
 
-<footer>USPS Resource Search</footer>
-<div class="airmail-edge" style="margin-top:22px;"></div>
+            </div>
+        </section>
 
-<script>
-  (function() {
-    var cx = '51798bbb2929e476f';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
-</script>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 mt-12 text-center text-xs text-slate-500">
+        <p>Built for quick access to postal standards, manuals, and official resources.</p>
+    </footer>
+
 </body>
 </html>
